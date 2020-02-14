@@ -7,17 +7,17 @@
         <v-row>
             <v-flex md6>
                 <h2>Props sample</h2>
-                <v-alert type="warning">
+                <v-alert type="warning" width='250'>
                     <small>I'm the parent / main page</small>
                 </v-alert>
                 <v-text-field
-                    label="Input title for the modal"
+                    label="Input title for the props modal"
                     v-model="title_props"
                     outlined
                 >
                 </v-text-field>
                 <v-text-field
-                    label="Input content for the modal"
+                    label="Input content for the props modal"
                     v-model="content_props"
                     outlined
                 >
@@ -26,7 +26,7 @@
             </v-flex>
             <v-flex md6>
                 <h2>This the modal (component) that uses props to get data from it's parent</h2>
-                <v-alert type="warning">
+                <v-alert type="warning" width='250'>
                     <small>I'm the child component</small>
                 </v-alert>
                 <v-btn @click="props_dialog = true" class="success">Open props modal</v-btn>
@@ -52,7 +52,7 @@
 
             <v-flex md6>
                 <h2>This is where data from child to parent emits</h2>
-                <v-alert type="warning">
+                <v-alert type="warning" width='250'>
                     <small>I'm the parent / main page</small>
                 </v-alert>
 
