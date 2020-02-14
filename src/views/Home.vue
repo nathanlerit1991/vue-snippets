@@ -1,18 +1,110 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <v-container>
+        <v-alert type="info">
+            • Input validation using regex
+            • Show more function
+        </v-alert>
+        <v-row>
+            <v-flex md6 pa-8>
+                <h3>Input field with regex validation</h3>
+
+                <v-text-field 
+                    v-model="text_type"
+                    label="Alphabet only" 
+                    :rules="[textRules.alphabet]"
+                    outlined>
+                </v-text-field>
+
+                <v-text-field 
+                    v-model="email_type"
+                    label="Valid email only" 
+                    :rules="[emailRules.email]"
+                    outlined>
+                </v-text-field>
+
+                <v-text-field 
+                    v-model="number_type"
+                    label="Number only" 
+                    :rules="[numberRules.number]"
+                    outlined>
+                </v-text-field>
+
+                <v-btn class="success" :disabled="text_type.length < 5" @click="resetInput()">Enabled if alphabet character inputs is greater than 5</v-btn>
+            </v-flex>
+
+            <v-flex md6 pa-8>
+                <h3>List with show more</h3>
+                <div>
+                    <div v-for="(list_port, list_port_index) in portfolio" :key='list_port_index'>
+                        <p v-if="list_port_index < limit">{{list_port.name}}</p>
+                    </div>
+                    <v-btn class="success" @click="showMore">Show more</v-btn>
+                </div>
+            </v-flex>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+// import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
+    name: 'home',
+    data(){
+        return{
+            text_type: '',
+            textRules: {
+                alphabet: v => /^[a-zA-Z\s]*$/i.test(v) || "Letters only",
+            },
+
+            email_type: '',
+            emailRules: {
+                email: v => /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i.test(v) || "Enter Valid Email",
+            },
+
+            number_type: '',
+            numberRules: {
+                number: v => /^\+[0-9\s]*$/i.test(v) || "Enter valid phone number",
+            },
+
+            portfolio: [
+                {
+                    name: 'Item 1'
+                },
+                {
+                    name: 'Item 2'
+                },
+                {
+                    name: 'Item 3'
+                },
+                {
+                    name: 'Item 4'
+                },
+                {
+                    name: 'Item 5'
+                },
+                {
+                    name: 'Item 6'
+                },
+                {
+                    name: 'Item 7'
+                },
+                {
+                    name: 'Item 8'
+                } 
+            ],
+            limit: 5,
+            showMoreAddItems: 1,
+        }
+    },
+    methods:{
+        showMore: function(){
+            this.limit += this.showMoreAddItems
+        },
+        resetInput: function(){
+            this.email = ''
+        }
+    }
 }
 </script>
