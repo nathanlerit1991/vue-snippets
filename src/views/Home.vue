@@ -3,10 +3,11 @@
         <v-alert type="info">
             • Input validation using regex
             • Show more function
+            • Computed data
         </v-alert>
         <v-row>
             <v-flex md6 pa-8>
-                <h3>Input field with regex validation</h3>
+                <h3 :class="append_class + ' ' + 'sadsd'">Input field with regex validation</h3>
 
                 <v-text-field 
                     v-model="text_type"
@@ -28,6 +29,13 @@
                     :rules="[numberRules.number]"
                     outlined>
                 </v-text-field>
+
+                <v-text-field 
+                    v-model="computed_label"
+                    label="Computed label"
+                    outlined>
+                </v-text-field>
+                <p>This is a computed data: {{computedData}}</p>
 
                 <v-btn class="success" :disabled="text_type.length < 5" @click="resetInput()">Enabled if alphabet character inputs is greater than 5</v-btn>
             </v-flex>
@@ -51,8 +59,23 @@
 
 export default {
     name: 'home',
+    computed: {
+        computedData(){
+            return this.computed_label.toUpperCase()
+        }
+    },
+    methods:{
+    showMore: function(){
+        this.limit += this.showMoreAddItems
+    },
+    resetInput: function(){
+        this.email = ''
+    }
+    },
     data(){
         return{
+            append_class: 'sample-class',
+            computed_label: '',
             text_type: '',
             textRules: {
                 alphabet: v => /^[a-zA-Z\s]*$/i.test(v) || "Letters only",
@@ -98,13 +121,5 @@ export default {
             showMoreAddItems: 1,
         }
     },
-    methods:{
-        showMore: function(){
-            this.limit += this.showMoreAddItems
-        },
-        resetInput: function(){
-            this.email = ''
-        }
-    }
 }
 </script>

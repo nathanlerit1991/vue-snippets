@@ -50,6 +50,8 @@ export default {
                 alert("Out of stock")
                 return
             }
+
+
             //decreased stocks in 'Shoplist' by 1
             this.shopping_list[index].stock--
 
