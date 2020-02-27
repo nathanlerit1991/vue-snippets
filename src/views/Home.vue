@@ -3,6 +3,7 @@
         <v-alert type="info">
             • Input validation using regex
             • Show more function
+            • Search
             • Computed data
         </v-alert>
         <v-row>
@@ -42,8 +43,24 @@
 
             <v-flex md6 pa-8>
                 <h3>List with show more</h3>
+
+                <v-icon>
+                    mdi-search
+                </v-icon>
+
+                <v-text-field
+                    label="Search items"
+                    prepend-inner-icon="mdi-magnify"
+                    v-model="search"
+                    outlined
+                    @keyup="typingFn()"
+                >
+                </v-text-field>
+                <span v-if="isLoading">Searching...</span>
+
+
                 <div>
-                    <div v-for="(list_port, list_port_index) in portfolio" :key='list_port_index'>
+                    <div v-for="(list_port, list_port_index) in searchItem" :key='list_port_index'>
                         <p v-if="list_port_index < limit">{{list_port.name}}</p>
                     </div>
                     <v-btn class="success" @click="showMore">Show more</v-btn>
@@ -62,18 +79,40 @@ export default {
     computed: {
         computedData(){
             return this.computed_label.toUpperCase()
+        },
+
+        searchItem(){
+            return this.portfolio.filter(item =>{
+                return item.name.toLowerCase().includes(this.search.toLowerCase())
+            })
+        }
+    },
+    watch: {
+        isLoading: function(val){
+            let _s = this
+
+            return setInterval(function(){
+                _s.isLoading = false
+                console.log(_s.isLoading)
+            }, 4000);
+            
         }
     },
     methods:{
-    showMore: function(){
-        this.limit += this.showMoreAddItems
-    },
-    resetInput: function(){
-        this.email = ''
-    }
+        showMore: function(){
+            this.limit += this.showMoreAddItems
+        },
+        resetInput: function(){
+            this.email = ''
+        },
+        typingFn(){
+            this.isLoading = true
+        }
     },
     data(){
         return{
+            isLoading: false,
+            search: '',
             append_class: 'sample-class',
             computed_label: '',
             text_type: '',
