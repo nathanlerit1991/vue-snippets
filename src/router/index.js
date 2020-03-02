@@ -6,6 +6,7 @@ import Profile from '../views/Profile.vue'
 import Pagination from '../views/Pagination.vue'
 import Date from '../views/Date.vue'
 import ShopCart from '../views/ShopCart.vue'
+import TwoDimensionalArray from '../views/TwoDimensionalArray.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
 		path: '/shop-cart',
 		name: 'shopcart',
 		component: ShopCart
+	},
+	{
+		path: '/two-dimensional-array',
+		name: 'twodimensionalarray',
+		component: TwoDimensionalArray
 	},
 ]
 

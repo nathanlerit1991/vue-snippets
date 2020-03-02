@@ -8,5 +8,6 @@
         <router-link tag="button" to="/pagination">Pagination</router-link>
         <router-link tag="button" to="/date">Date</router-link>
         <router-link tag="button" to="/shop-cart">Shop Cart</router-link>
+        <router-link tag="button" to="/two-dimensional-array">Two Dimensional Array</router-link>
     </v-toolbar>
 </template>

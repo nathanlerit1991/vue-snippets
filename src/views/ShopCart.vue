@@ -28,7 +28,6 @@
                     <div class="no-items" v-if="item_prices.length <= 0">
                         <h2 class="grey--text text--lighten-1">No Item</h2>
                     </div>
-
                 </div>
 
                 <v-divider></v-divider>
