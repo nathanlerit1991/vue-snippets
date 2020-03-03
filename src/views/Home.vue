@@ -3,12 +3,13 @@
         <v-alert type="info">
             • Input validation using regex
             • Show more function
+            • Current / active nav state
             • Search
             • Computed data
         </v-alert>
         <v-row>
             <v-flex md6 pa-8>
-                <h3 :class="append_class + ' ' + 'sadsd'">Input field with regex validation</h3>
+                <h3 :class="append_class + ' ' + 'sadsd'">Input field with regex validation</h3> <!-- Append class -->
 
                 <v-text-field 
                     v-model="text_type"
@@ -38,7 +39,7 @@
                 </v-text-field>
                 <p>This is a computed data: {{computedData}}</p>
 
-                <v-btn class="success" :disabled="text_type.length < 5" @click="resetInput()">Enabled if alphabet character inputs is greater than 5</v-btn>
+                <v-btn class="success" :disabled="text_type.length < 5" @click="resetInput()">Enabled if alphabet character inputs is greater than 5</v-btn> <!-- disabled until certain condition met -->
             </v-flex>
 
             <v-flex md6 pa-8>
@@ -65,10 +66,31 @@
                     </div>
                     <v-btn class="success" @click="showMore">Show more</v-btn>
                 </div>
+
+
+                <!-- THIS METHOD IS NOT WORKING ON ROUTER-LINKS -->
+                <br/>
+                <h3>Active class buttons</h3>
+                <v-btn 
+                    @click="current = menuItems_index"
+                    :class="{current:menuItems_index == current}"
+                    v-for="(menuData, menuItems_index) in menuItems" 
+                    :key="menuItems_index">
+                        {{menuData}}
+                </v-btn>
             </v-flex>
         </v-row>
     </v-container>
 </template>
+
+<style>
+    .current{
+        background: red !important;
+    }
+    .current *{
+        color: #fff !important;
+    }
+</style>
 
 <script>
 // @ is an alias to /src
@@ -111,6 +133,12 @@ export default {
     },
     data(){
         return{
+            current: 0,
+            menuItems: [
+                'home',
+                'about',
+                'contact us'
+            ],
             isLoading: false,
             search: '',
             append_class: 'sample-class',

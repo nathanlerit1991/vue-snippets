@@ -1,5 +1,16 @@
 <template>
     <v-container>
+        <v-flex md2>
+            <v-text-field
+            outlined
+            label="Add item"
+            v-model="add_item"
+            @keyup="addItem($event)"
+            >
+
+            </v-text-field>
+        </v-flex>
+    
         <v-row>
             <v-flex md4>
                 <h3>Staging</h3>
@@ -29,6 +40,14 @@
 <script>
 export default {
     methods: {
+        addItem(e){
+            let _s = this
+            if (e.keyCode === 13) {
+                _s.items[0].push(_s.add_item)
+                _s.add_item = ''
+            }
+        },
+
         moveDev(index, datum){
             let _s = this
             _s.items[1].push(datum)         
@@ -56,10 +75,11 @@ export default {
     },
     data(){
         return {
+            add_item: '',
             items:[
-                ["item1"],
-                ["item2"],
-                ["item3"],
+                [],
+                [],
+                []
             ]
         }
     }

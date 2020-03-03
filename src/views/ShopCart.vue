@@ -41,7 +41,7 @@
 
 <script>
 export default {
-    name: 'Shop Cart',
+    name: 'ShopCart',
     methods:{
         addCart(id, item, price, index, stock){
             //If no more stocks in 'Shoplist'

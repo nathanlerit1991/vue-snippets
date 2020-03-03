@@ -7,6 +7,7 @@ import Pagination from '../views/Pagination.vue'
 import Date from '../views/Date.vue'
 import ShopCart from '../views/ShopCart.vue'
 import TwoDimensionalArray from '../views/TwoDimensionalArray.vue'
+import CloneMap from '../views/CloneMap.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
 		path: '/two-dimensional-array',
 		name: 'twodimensionalarray',
 		component: TwoDimensionalArray
+	},
+	{
+		path: '/clone-map',
+		name: 'clonemap',
+		component: CloneMap
 	},
 ]
 
