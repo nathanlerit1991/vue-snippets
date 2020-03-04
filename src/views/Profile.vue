@@ -38,16 +38,33 @@
             <v-flex md8>
                 <h2>Profile Details</h2>
 
-                <div class="profile-details">
+                <!-- <div class="profile-details">
                     <div v-for="(users, users_index) in user_list" :key="users_index">
                         <img :src="users.avatar"/>
                         <p>ID {{users.id}}</p>
                         <p>Email {{users.email}}</p>
                         <p>Name {{users.first_name}} {{users.last_name}}</p>
                     </div>
-                </div>
+                </div>-->
             </v-flex>
         </v-row>
+
+
+
+
+
+
+        <div class="upload-file">
+            <label>File
+                <input accept=".csv" type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+            </label>
+            <button v-on:click="submitFile()">Submit</button>
+        </div>
+
+
+
+
+
     </v-container>
 </template>
 
@@ -57,6 +74,7 @@ import { mapFields } from 'vuex-map-fields'
 export default {
     data(){
         return{
+            file: '',
             imgUrl: '',
             myCroppa: null,
             email: '',
@@ -76,6 +94,36 @@ export default {
     methods: {
         ...mapActions('profile', ['saveProfilePicture', 'getUserList']),
         ...mapMutations('utils', ['loaderFn']),
+
+
+
+
+
+
+        handleFileUpload(){
+            this.file = this.$refs.file.files[0]
+        },
+
+        submitFile(){
+            let formData = new FormData()
+            formData.append('file', this.file)
+
+            //check file type
+            // if(this.file['type']==='image/png'){
+            //     alert("true")
+            // }
+            // else{
+            //     alert("false")
+            // }
+            console.log("========", this.file)
+            // console.log("========", formData)
+        },
+
+
+
+
+
+
 
         generateImage: function(){
             let url = this.myCroppa.generateDataUrl()
