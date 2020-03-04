@@ -56,7 +56,7 @@
 
         <div class="upload-file">
             <label>File
-                <input accept=".csv" type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
+                <input accept=".csv, .png" type="file" id="file" ref="file" v-on:change="handleFileUpload()"/>
             </label>
             <button v-on:click="submitFile()">Submit</button>
         </div>
@@ -98,15 +98,13 @@ export default {
 
 
 
-
-
         handleFileUpload(){
             this.file = this.$refs.file.files[0]
         },
 
         submitFile(){
             let formData = new FormData()
-            formData.append('file', this.file)
+            formData.append('file', blob, this.file)
 
             //check file type
             // if(this.file['type']==='image/png'){
