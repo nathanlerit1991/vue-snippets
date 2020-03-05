@@ -61,6 +61,10 @@
                 {
                     name: 'Clone and Map',
                     url: '/clone-map'
+                },
+                {
+                    name: 'Tina',
+                    url: '/tina'
                 }
             ]
         }

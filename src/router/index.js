@@ -8,6 +8,7 @@ import Date from '../views/Date.vue'
 import ShopCart from '../views/ShopCart.vue'
 import TwoDimensionalArray from '../views/TwoDimensionalArray.vue'
 import CloneMap from '../views/CloneMap.vue'
+import Tina from '../views/TinaSnippets.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
 		path: '/clone-map',
 		name: 'clonemap',
 		component: CloneMap
+	},
+	{
+		path: '/tina',
+		name: 'tina',
+		component: Tina
 	},
 ]
 
