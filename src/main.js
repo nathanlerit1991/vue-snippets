@@ -10,11 +10,12 @@ import Axios from 'axios'
 //SASS LOADER https://flaviocopes.com/vue-using-scss/
 
 
-Vue.use(Croppa) 
+Vue.use(Croppa)
 Vue.config.productionTip = false
 
 let axiosInstance = Axios.create({
-	baseURL: 'https://reqres.in/api/',
+	// baseURL: 'https://reqres.in/api/',
+	baseURL: 'http://localhost:3000/'
 })
 
 window.axios = axiosInstance

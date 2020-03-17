@@ -19,13 +19,17 @@ const actions = {
     async getUserList( {commit} ){
         let resApi = await api.getUserList()
         commit('onOkGetUserList', resApi.data)
+    },
+
+    async saveUserList( {commit}, data ){
+        let resApi = await api.saveUserList(data)
     }
 }
 
 const mutations = {
     updateField,
     onOkGetUserList(state, data){
-        state.user_list = data.data
+        state.user_list = data
     }
 }
 

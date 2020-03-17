@@ -7,7 +7,7 @@
         </v-alert>
         <v-row>
             <v-flex md4 class="profile-picture">
-                <croppa 
+                <croppa
                     initial-image="@/assets/default_avatar.jpg"
                     v-model="myCroppa"
                     >
@@ -30,6 +30,16 @@
                     v-model="last_name"
                     outlined
                 ></v-text-field>
+                <v-text-field
+                    label="Age"
+                    v-model="age"
+                    outlined
+                ></v-text-field>
+                <v-text-field
+                    label="Company Id"
+                    v-model="company_id"
+                    outlined
+                ></v-text-field>
 
 
                 <v-btn class="success" @click="addUser()">Add user</v-btn>
@@ -38,14 +48,14 @@
             <v-flex md8>
                 <h2>Profile Details</h2>
 
-                <!-- <div class="profile-details">
+                <div class="profile-details">
                     <div v-for="(users, users_index) in user_list" :key="users_index">
-                        <img :src="users.avatar"/>
                         <p>ID {{users.id}}</p>
                         <p>Email {{users.email}}</p>
-                        <p>Name {{users.first_name}} {{users.last_name}}</p>
+                        <p>Name {{users.firstName}} {{users.lastName}}</p>
+                        <p>Age {{users.age}}</p>
                     </div>
-                </div>-->
+                </div>
             </v-flex>
         </v-row>
 
@@ -80,6 +90,8 @@ export default {
             email: '',
             first_name: '',
             last_name: '',
+            age: '',
+            company_id: '',
         }
     },
     async mounted(){
@@ -92,7 +104,7 @@ export default {
         ...mapFields('utils', ['loader_dialog'])
     },
     methods: {
-        ...mapActions('profile', ['saveProfilePicture', 'getUserList']),
+        ...mapActions('profile', ['saveProfilePicture', 'getUserList', 'saveUserList']),
         ...mapMutations('utils', ['loaderFn']),
 
 
@@ -132,14 +144,16 @@ export default {
             this.imgUrl = url
         },
 
-        addUser(){
-            this.user_list.push({
-                id: 3,
+        async addUser(){
+            this.user_list = {
+                firstName: this.first_name,
+                lastName: this.last_name,
                 email: this.email,
-                first_name: this.first_name,
-                last_name: this.last_name,
-                avatar: this.imgUrl
-            })
+                age: this.age,
+                companyId: this.company_id
+            }
+            await this.saveUserList(this.user_list)
+            await this.getUserList()
         },
 
         // uploadCroppedImage(){

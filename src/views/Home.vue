@@ -11,28 +11,28 @@
             <v-flex md6 pa-8>
                 <h3 :class="append_class + ' ' + 'sadsd'">Input field with regex validation</h3> <!-- Append class -->
 
-                <v-text-field 
+                <v-text-field
                     v-model="text_type"
-                    label="Alphabet only" 
+                    label="Alphabet only"
                     :rules="[textRules.alphabet]"
                     outlined>
                 </v-text-field>
 
-                <v-text-field 
+                <v-text-field
                     v-model="email_type"
-                    label="Valid email only" 
+                    label="Valid email only"
                     :rules="[emailRules.email]"
                     outlined>
                 </v-text-field>
 
-                <v-text-field 
+                <v-text-field
                     v-model="number_type"
-                    label="Number only" 
+                    label="Number only"
                     :rules="[numberRules.number]"
                     outlined>
                 </v-text-field>
 
-                <v-text-field 
+                <v-text-field
                     v-model="computed_label"
                     label="Computed label"
                     outlined>
@@ -71,10 +71,10 @@
                 <!-- THIS METHOD IS NOT WORKING ON ROUTER-LINKS -->
                 <br/>
                 <h3>Active class buttons</h3>
-                <v-btn 
+                <v-btn
                     @click="current = menuItems_index"
                     :class="{current:menuItems_index == current}"
-                    v-for="(menuData, menuItems_index) in menuItems" 
+                    v-for="(menuData, menuItems_index) in menuItems"
                     :key="menuItems_index">
                         {{menuData}}
                 </v-btn>
@@ -117,7 +117,7 @@ export default {
                 _s.isLoading = false
                 console.log(_s.isLoading)
             }, 4000);
-            
+
         }
     },
     methods:{
@@ -182,7 +182,7 @@ export default {
                 },
                 {
                     name: 'Item 8'
-                } 
+                }
             ],
             limit: 5,
             showMoreAddItems: 1,
