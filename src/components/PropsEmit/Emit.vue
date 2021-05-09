@@ -3,7 +3,7 @@
         <v-alert type="warning" width='250'>
             <small>I'm the child component - sample data below <v-icon>mdi-arrow-down-bold-circle-outline</v-icon></small>
         </v-alert>
-        
+
         <div v-for="(datum, datum_index) in sample_data" :key="datum_index">
             <p>{{datum.name}}</p>
             <p>{{datum.position}}</p>

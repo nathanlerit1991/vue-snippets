@@ -9,6 +9,7 @@ import ShopCart from '../views/ShopCart.vue'
 import TwoDimensionalArray from '../views/TwoDimensionalArray.vue'
 import CloneMap from '../views/CloneMap.vue'
 import Tina from '../views/TinaSnippets.vue'
+import Search from '../views/Search.vue'
 
 Vue.use(VueRouter)
 
@@ -57,6 +58,11 @@ const routes = [
 		path: '/tina',
 		name: 'tina',
 		component: Tina
+	},
+	{
+		path: '/search',
+		name: 'search',
+		component: Search
 	},
 ]
 

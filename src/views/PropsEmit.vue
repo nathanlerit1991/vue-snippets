@@ -22,7 +22,7 @@
                     outlined
                 >
                 </v-text-field>
-                
+
             </v-flex>
             <v-flex md6>
                 <h2>This the modal (component) that uses props to get data from it's parent</h2>
@@ -30,15 +30,15 @@
                     <small>I'm the child component</small>
                 </v-alert>
                 <v-btn @click="props_dialog = true" class="success">Open props modal</v-btn>
-                <PropsModal 
-                    :title='title_props' 
-                    :content='content_props' 
+                <PropsModal
+                    :title='title_props'
+                    :content='content_props'
                 /> <!--props data will pass to PropsModal component-->
             </v-flex>
         </v-row>
 
         <v-divider></v-divider>
-        
+
          <v-row>
             <v-flex md6>
                 <h2>Emit sample</h2>
@@ -46,7 +46,7 @@
                     child component
                     when @update-emit triggers from the child component, it will call the function 'updateEmit'
                 -->
-                <EmitComponent @update-emit="updateEmit" /> 
+                <EmitComponent @update-emit="updateEmit" />
             </v-flex>
 
 

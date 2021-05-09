@@ -3,7 +3,7 @@
         <v-spacer></v-spacer>
 
         <router-link
-            v-for="(items, items_index) in navItems" tag="button" :to="items.url" 
+            v-for="(items, items_index) in navItems" tag="button" :to="items.url"
             :key="items_index"
         >
             {{items.name}}
@@ -65,6 +65,10 @@
                 {
                     name: 'Tina',
                     url: '/tina'
+                },
+                {
+                    name: 'Search',
+                    url: '/search'
                 }
             ]
         }

@@ -75,7 +75,7 @@ export default {
                 if(item.id === id){
                     item.stock++
                 }
-            });   
+            });
         }
     },
     watch:{
