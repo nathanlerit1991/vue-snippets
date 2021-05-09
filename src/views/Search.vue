@@ -3,6 +3,11 @@
     <v-container>
       <v-row>
         <h2>This is search function with show limit</h2>
+        <v-flex md12>
+          <v-alert class="info">
+            Doesn't add empty DOM element
+          </v-alert>
+        </v-flex>
       </v-row>
 
       <v-text-field
@@ -17,6 +22,10 @@
         <v-flex md3 mt-10 v-for="(game, game_index) in gamefilter" :key="game_index">
             <h3>{{ game.title }}</h3>
             <p>{{ game.desc }}</p>
+        </v-flex>
+
+        <v-flex md12>
+          Showing {{ gamefilter.length }} of {{ this.games.length }} games
         </v-flex>
       </v-row>
     </v-container>
